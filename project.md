@@ -1,6 +1,6 @@
 ${{ image: Dashboard.png }}
 
-${{ content_synopsis }} Run the prefer IaC reverse proxy distroless and rootless for maximum security.
+${{ content_synopsis }} This image will run memos [rootless](https://github.com/11notes/RTFM/blob/main/linux/container/image/rootless.md) and [distroless](https://github.com/11notes/RTFM/blob/main/linux/container/image/distroless.md), for maximum security and performance. For infos on how to setup memos with OIDC consult their [documentation](https://www.usememos.com/docs/advanced-settings/sso).
 
 ${{ content_uvp }} Good question! Because ...
 
@@ -26,6 +26,11 @@ ${{ content_compose }}
 ${{ content_defaults }}
 
 ${{ content_environment }}
+| `MEMOS_MODE` | Mode of operation (prod, dev or demo) | prod |
+| `MEMOS_ADDR` | IP to listen on | 0.0.0.0 |
+| `MEMOS_PORT` | Port to listen on | 5230 |
+| `MEMOS_DATA` | Data directory to store files | /memos/var |
+| `MEMOS_DRIVER` | Backend driver to use (postgres, sqlite and mysql) | postgres |
 
 ${{ content_source }}
 
