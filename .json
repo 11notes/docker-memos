@@ -1,0 +1,24 @@
+{
+  "image": "11notes/memos",
+  "name": "memos",
+  "root": "/memos",
+  "semver": {
+    "version": "0.25.0"
+  },
+  "readme": {
+    "description": "Run memos rootless, distroless and secure by default!",
+    "introduction": "A modern, open-source, self-hosted knowledge management and note-taking platform designed for privacy-conscious users and organizations. Memos provides a lightweight yet powerful solution for capturing, organizing, and sharing thoughts with comprehensive Markdown support and cross-platform accessibility.",
+    "built": {
+      "memos": "https://github.com/usememos/memos"
+    },
+    "distroless": {
+      "layers": [
+        "11notes/distroless",
+        "11notes/distroless:localhealth"
+      ]
+    },
+    "comparison": {
+      "image": "neosmemo/memos"
+    }
+  }
+}
