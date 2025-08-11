@@ -33,6 +33,7 @@ services:
         condition: "service_healthy"
         restart: true
     image: "11notes/memos:0.25.0"
+    <<: *lockdown
     environment:
       TZ: "Europe/Zurich"
       MEMOS_DSN: "postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres?sslmode=disable"
