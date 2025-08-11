@@ -12,7 +12,7 @@ A modern, open-source, self-hosted knowledge management and note-taking platform
 ![DASHBOARD](https://github.com/11notes/docker-memos/blob/master/img/Dashboard.png?raw=true)
 
 # SYNOPSIS 📖
-**What can I do with this?** Run the prefer IaC reverse proxy distroless and rootless for maximum security.
+**What can I do with this?** This image will run memos [rootless](https://github.com/11notes/RTFM/blob/main/linux/container/image/rootless.md) and [distroless](https://github.com/11notes/RTFM/blob/main/linux/container/image/distroless.md), for maximum security and performance. For infos on how to setup memos with OIDC consult their [documentation](https://www.usememos.com/docs/advanced-settings/sso).
 
 # UNIQUE VALUE PROPOSITION 💶
 **Why should I run this image and not the other image(s) that already exist?** Good question! Because ...
@@ -80,6 +80,7 @@ services:
         condition: "service_healthy"
         restart: true
     image: "11notes/memos:0.25.0"
+    <<: *lockdown
     environment:
       TZ: "Europe/Zurich"
       MEMOS_DSN: "postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres?sslmode=disable"
@@ -117,6 +118,11 @@ networks:
 | --- | --- | --- |
 | `TZ` | [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | |
 | `DEBUG` | Will activate debug option for container image and app (if available) | |
+| `MEMOS_MODE` | Mode of operation (prod, dev or demo) | prod |
+| `MEMOS_ADDR` | IP to listen on | 0.0.0.0 |
+| `MEMOS_PORT` | Port to listen on | 5230 |
+| `MEMOS_DATA` | Data directory to store files | /memos/var |
+| `MEMOS_DRIVER` | Backend driver to use (postgres, sqlite and mysql) | postgres |
 
 # MAIN TAGS 🏷️
 These are the main tags for the image. There is also a tag for each commit and its shorthand sha256 value.
@@ -156,4 +162,4 @@ docker pull quay.io/11notes/memos:0.25.0
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-memos/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-memos/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-memos/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 11.08.2025, 15:48:35 (CET)*
+*created 11.08.2025, 16:10:35 (CET)*
