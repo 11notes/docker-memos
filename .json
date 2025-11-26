@@ -3,7 +3,7 @@
   "name": "memos",
   "root": "/memos",
   "semver": {
-    "version": "0.25.2"
+    "version": "0.25.3"
   },
   "readme": {
     "description": "Run memos rootless, distroless and secure by default!",
