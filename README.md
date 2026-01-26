@@ -48,16 +48,18 @@ x-lockdown: &lockdown
   # prevents any process within the container to gain more privileges
   security_opt:
     - "no-new-privileges=true"
-    
+
 services:
   postgres:
-    # detailed info about this image: https://github.com/11notes/docker-postgres
-    image: "11notes/postgres:16"
+    # for more information about this image checkout:
+    # https://github.com/11notes/docker-postgres
+    image: "11notes/postgres:18"
     <<: *lockdown
     environment:
       TZ: "Europe/Zurich"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      POSTGRES_BACKUP_SCHEDULE: "0 3 * * *"
+    networks:
+      backend:
     volumes:
       - "postgres.etc:/postgres/etc"
       - "postgres.var:/postgres/var"
@@ -65,8 +67,6 @@ services:
     tmpfs:
       - "/postgres/run:uid=1000,gid=1000"
       - "/postgres/log:uid=1000,gid=1000"
-    networks:
-      backend:
     restart: "always"
 
   app:
@@ -166,4 +166,4 @@ This image supports nobody by default. Simply add **-nobody** to any tag and the
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-memos/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-memos/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-memos/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 26.01.2026, 20:56:21 (CET)*
+*created 26.01.2026, 21:01:22 (CET)*
