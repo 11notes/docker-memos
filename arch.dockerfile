@@ -14,7 +14,7 @@
 # ║                       BUILD                         ║
 # ╚═════════════════════════════════════════════════════╝
 # :: MEMOS
-  FROM 11notes/go:1.24 AS build
+  FROM 11notes/go:1.25 AS build
   ARG BUILD_ROOT \
       BUILD_BIN \
       BUILD_SRC \
