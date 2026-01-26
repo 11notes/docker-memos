@@ -39,7 +39,7 @@
 
   RUN set -ex; \
     cd ${BUILD_ROOT}; \
-    eleven go build ${BUILD_BIN} ${BUILD_ROOT}/bin/memos/main.go;
+    eleven go build ${BUILD_BIN} ${BUILD_ROOT}/cmd/memos/main.go;
 
   RUN set -ex; \
     eleven distroless ${BUILD_BIN};
