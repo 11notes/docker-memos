@@ -3,7 +3,7 @@
   "name": "memos",
   "root": "/memos",
   "semver": {
-    "version": "0.25.3"
+    "version": "0.26.0"
   },
   "readme": {
     "description": "run Memos rootless and distroless.",
