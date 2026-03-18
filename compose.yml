@@ -8,25 +8,6 @@ x-lockdown: &lockdown
     - "no-new-privileges=true"
 
 services:
-  postgres:
-    # for more information about this image checkout:
-    # https://github.com/11notes/docker-postgres
-    image: "11notes/postgres:18"
-    <<: *lockdown
-    environment:
-      TZ: "Europe/Zurich"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-    networks:
-      backend:
-    volumes:
-      - "postgres.etc:/postgres/etc"
-      - "postgres.var:/postgres/var"
-      - "postgres.backup:/postgres/backup"
-    tmpfs:
-      - "/postgres/run:uid=1000,gid=1000"
-      - "/postgres/log:uid=1000,gid=1000"
-    restart: "always"
-
   app:
     depends_on:
       postgres:
@@ -46,11 +27,30 @@ services:
       backend:
     restart: "always"
 
+  postgres:
+    # for more information about this image checkout:
+    # https://github.com/11notes/docker-postgres
+    image: "11notes/postgres:18"
+    <<: *lockdown
+    environment:
+      TZ: "Europe/Zurich"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    networks:
+      backend:
+    volumes:
+      - "postgres.etc:/postgres/etc"
+      - "postgres.var:/postgres/var"
+      - "postgres.backup:/postgres/backup"
+    tmpfs:
+      - "/postgres/run:uid=1000,gid=1000"
+      - "/postgres/log:uid=1000,gid=1000"
+    restart: "always"
+
 volumes:
+  memos.var:
   postgres.etc:
   postgres.var:
   postgres.backup:
-  memos.var:
 
 networks:
   frontend:
