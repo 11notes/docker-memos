@@ -1,5 +1,6 @@
 {
   "image": "11notes/memos",
+  "platform":"amd64,arm64",
   "name": "memos",
   "root": "/memos",
   "semver": {
