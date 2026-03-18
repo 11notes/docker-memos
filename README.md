@@ -1,7 +1,7 @@
-![banner](https://raw.githubusercontent.com/11notes/static/refs/heads/main/img/banner/README.png)
+![banner](https://raw.githubusercontent.com/11notes/static/refs/heads/master/img/banner/README.png)
 
 # MEMOS
-![size](https://img.shields.io/badge/image_size-${{ image_size }}-green?color=%2338ad2d)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/main/img/markdown/transparent5x2px.png)![pulls](https://img.shields.io/docker/pulls/11notes/memos?color=2b75d6)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/main/img/markdown/transparent5x2px.png)[<img src="https://img.shields.io/github/issues/11notes/docker-memos?color=7842f5">](https://github.com/11notes/docker-memos/issues)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/main/img/markdown/transparent5x2px.png)![swiss_made](https://img.shields.io/badge/Swiss_Made-FFFFFF?labelColor=FF0000&logo=data:image/svg%2bxml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0idHJhbnNwYXJlbnQiLz4KICA8cGF0aCBkPSJtMTMgNmg2djdoN3Y2aC03djdoLTZ2LTdoLTd2LTZoN3oiIGZpbGw9IiNmZmYiLz4KPC9zdmc+)
+![size](https://img.shields.io/badge/image_size-${{ image_size }}-green?color=%2338ad2d)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/master/img/markdown/transparent5x2px.png)![pulls](https://img.shields.io/docker/pulls/11notes/memos?color=2b75d6)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/master/img/markdown/transparent5x2px.png)[<img src="https://img.shields.io/github/issues/11notes/docker-memos?color=7842f5">](https://github.com/11notes/docker-memos/issues)![5px](https://raw.githubusercontent.com/11notes/static/refs/heads/master/img/markdown/transparent5x2px.png)![swiss_made](https://img.shields.io/badge/Swiss_Made-FFFFFF?labelColor=FF0000&logo=data:image/svg%2bxml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0idHJhbnNwYXJlbnQiLz4KICA8cGF0aCBkPSJtMTMgNmg2djdoN3Y2aC03djdoLTZ2LTdoLTd2LTZoN3oiIGZpbGw9IiNmZmYiLz4KPC9zdmc+)
 
 run Memos rootless and distroless.
 
@@ -50,25 +50,6 @@ x-lockdown: &lockdown
     - "no-new-privileges=true"
 
 services:
-  postgres:
-    # for more information about this image checkout:
-    # https://github.com/11notes/docker-postgres
-    image: "11notes/postgres:18"
-    <<: *lockdown
-    environment:
-      TZ: "Europe/Zurich"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-    networks:
-      backend:
-    volumes:
-      - "postgres.etc:/postgres/etc"
-      - "postgres.var:/postgres/var"
-      - "postgres.backup:/postgres/backup"
-    tmpfs:
-      - "/postgres/run:uid=1000,gid=1000"
-      - "/postgres/log:uid=1000,gid=1000"
-    restart: "always"
-
   app:
     depends_on:
       postgres:
@@ -88,11 +69,30 @@ services:
       backend:
     restart: "always"
 
+  postgres:
+    # for more information about this image checkout:
+    # https://github.com/11notes/docker-postgres
+    image: "11notes/postgres:18"
+    <<: *lockdown
+    environment:
+      TZ: "Europe/Zurich"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    networks:
+      backend:
+    volumes:
+      - "postgres.etc:/postgres/etc"
+      - "postgres.var:/postgres/var"
+      - "postgres.backup:/postgres/backup"
+    tmpfs:
+      - "/postgres/run:uid=1000,gid=1000"
+      - "/postgres/log:uid=1000,gid=1000"
+    restart: "always"
+
 volumes:
+  memos.var:
   postgres.etc:
   postgres.var:
   postgres.backup:
-  memos.var:
 
 networks:
   frontend:
@@ -166,4 +166,4 @@ This image supports nobody by default. Simply add **-nobody** to any tag and the
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-memos/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-memos/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-memos/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 24.02.2026, 07:03:23 (CET)*
+*created 18.03.2026, 07:21:40 (CET)*
