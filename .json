@@ -1,10 +1,10 @@
 {
   "image": "11notes/memos",
-  "platform":"amd64,arm64",
+  "platform": "amd64,arm64",
   "name": "memos",
   "root": "/memos",
   "semver": {
-    "version": "0.26.2"
+    "version": "0.27.1"
   },
   "readme": {
     "description": "run Memos rootless and distroless.",
