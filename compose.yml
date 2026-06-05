@@ -13,7 +13,7 @@ services:
       postgres:
         condition: "service_healthy"
         restart: true
-    image: "11notes/memos:0.29.0"
+    image: "11notes/memos:0.29.1"
     <<: *lockdown
     environment:
       TZ: "Europe/Zurich"
