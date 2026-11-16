@@ -40,7 +40,7 @@
 
   RUN set -ex; \
     cd ${BUILD_ROOT}; \
-    eleven go build ${BUILD_BIN} ${BUILD_ROOT}/cmd/memos/main.go;
+    eleven go build ${BUILD_BIN} ${BUILD_ROOT}/cmd/memos;
 
   RUN set -ex; \
     eleven distroless ${BUILD_BIN};
