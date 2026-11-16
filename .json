@@ -17,9 +17,6 @@
         "11notes/distroless",
         "11notes/distroless:localhealth"
       ]
-    },
-    "comparison": {
-      "image": "neosmemo/memos"
     }
   },
   "unraid": true,
