@@ -19,7 +19,7 @@
       ]
     },
     "comparison": {
-      "image": "neosmemo/memos:0.26.2"
+      "image": "neosmemo/memos"
     }
   },
   "unraid": true,
